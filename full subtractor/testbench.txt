@@ -1,0 +1,30 @@
+module full_sub_tst;
+  reg a;
+  reg b;
+  reg bi;
+  
+  wire d;
+  wire bo;
+  
+  ful_sub_str uut(
+    .d(d),
+    .bo(bo),
+    .a(a),
+    .b(b),
+    .bi(bi)
+  );
+  
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars(1);
+    a=0;
+    b=0;
+    bi=0;
+    
+  end
+  always #4 a=a+1'b1;
+  always #2 b=b+1'b1;
+  always #1 bi=bi+1'b1;
+  
+  initial #20 $finish;
+endmodule
