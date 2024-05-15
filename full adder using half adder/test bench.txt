@@ -1,0 +1,38 @@
+module full_adder_test;
+  reg a;
+  reg b;
+  reg ci;
+  
+  wire s;
+  wire co;
+  
+  full_adder uut(
+    .s(s),
+    .a(a),
+    .b(b),
+    .ci(ci),
+    .co(co)
+  );
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars(1);
+
+    a=1'b1;
+    b=1'b0;
+    ci=1'b1;
+    
+    #5
+    
+    a=1'b0;
+    b=1'b0;
+    ci=1'b0;
+    #5
+    
+    a=1'b0;
+    b=1'b1;
+    c=1'b1;
+    #5;
+    
+    $finish;
+  end
+endmodule;
