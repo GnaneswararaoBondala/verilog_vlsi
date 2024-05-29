@@ -1,0 +1,29 @@
+module sub_4bit(
+  output [3:0] d,
+  output bo,
+  input [3:0] a,
+  input [3:0] b,
+  input bin
+);
+  wire [2:0] bi;
+
+  // Instantiate 4 full subtractors
+  full_3 sub1(d[0], bi[0], a[0], ~b[0], bin);
+  full_3 sub2(d[1], bi[1], a[1], ~b[1], bi[0]);
+  full_3 sub3(d[2], bi[2], a[2], ~b[2], bi[1]);
+  full_3 sub4(d[3], bo, a[3], ~b[3], bi[2]);
+
+endmodule
+
+module full_3(
+  output reg s,
+  output reg co,
+  input a,
+  input b,
+  input c
+);
+  always @(*) begin
+    s = a ^ b ^ c;
+    co = (a & b) | (b & c) | (a & c);
+  end
+endmodule
