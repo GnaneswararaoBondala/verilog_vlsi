@@ -1,0 +1,8 @@
+module adde_16bit_beh(s,co,a,b,ci);
+  output reg [15:0] s;
+  output reg co;
+  input [15:0] a,b;
+  input ci;
+  always @(a or b or ci)
+  {co,s}=a+b+ci;
+endmodule
