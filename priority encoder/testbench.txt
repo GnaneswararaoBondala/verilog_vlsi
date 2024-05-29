@@ -1,0 +1,23 @@
+module priority_encoder_tst;
+  reg [7:0]i;
+  wire [2:0] o;
+  priority_encoder uut(
+    .o(o),
+    .i(i)
+  );
+  
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars(1);
+    
+    i=8'h01;
+    #2 i=8'h03;
+    #2 i=8'h05;
+    #2 i=8'h08;
+    #2 i=8'h10;
+    #2 i=8'h30;
+    #2 i=8'h50; 
+    #2 i=8'h80;
+  end
+  initial #10 $finish;
+endmodule
