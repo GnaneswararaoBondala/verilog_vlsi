@@ -1,0 +1,6 @@
+module demux_str(o,s,i);
+  output [1:0] o;
+  input s,i;
+  assign o[0]=~s&i;
+  assign o[1]=s&i;
+endmodule

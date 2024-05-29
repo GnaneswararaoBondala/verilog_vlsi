@@ -1,0 +1,23 @@
+module dumux_tst;
+  
+  reg s;
+  reg i;
+  
+  wire[1:0] o;
+  demux_str uut(
+    .o(o),
+    .s(s),
+    .i(i)
+    
+  );
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars(1);
+    
+    s=0;
+    i=1;
+  end
+  
+  always #2 s=s+1'b1;
+  initial #10 $finish;
+endmodule
