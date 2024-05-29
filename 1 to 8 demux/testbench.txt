@@ -1,0 +1,28 @@
+module demux_8_1_tst;
+  reg i;
+  reg [2:0] s;
+  
+  wire [7:0] o;
+  
+  demux uut(
+    .o(o),
+    .i(i),
+    .s(s)
+  );
+  
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars(1);
+    
+    i=1;
+    s=3'b000;
+    #2 s=3'b001;
+    #2 s=3'b010;
+    #2 s=3'b011;
+    #2 s=3'b100;
+    #2 s=3'b101;
+    #2 s=3'b110;
+    #2 s=3'b111;
+  end
+  initial #30 $finish;
+endmodule

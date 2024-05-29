@@ -1,0 +1,20 @@
+module demux(o,i,s);
+  output [7:0]o;
+  input i;
+  input [2:0]s;
+  wire [6:1]k;
+  demux_1_2 vas1(k[2:1],s[2],i);
+  demux_1_2 vas2(k[4:3],s[1],k[1]);
+  demux_1_2 vas3(k[6:5],s[1],k[2]);
+  demux_1_2 vas4(o[1:0],s[0],k[3]);
+  demux_1_2 vas5(o[3:2],s[0],k[4]);
+  demux_1_2 vas6(o[5:4],s[0],k[5]);
+  demux_1_2 vas7(o[7:6],s[0],k[6]);
+endmodule
+
+module demux_1_2(o,s,i);
+  output [1:0]o;
+  input s,i;
+  assign o[0]=~s&i;
+  assign o[1]=s&i;
+endmodule
