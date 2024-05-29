@@ -1,0 +1,27 @@
+module mux_tst;
+  reg [1:0] in;
+  reg s;
+  
+  wire out;
+  
+  mux_2_1 uut (
+    .out(out),
+    .in(in),
+    .s(s)
+    );
+  
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars(1);
+    
+    in=2'b00;
+    s=0;
+  end
+  
+  always #2 s=s+1;
+  always #1 in=in+1;
+  initial #20 $finish;
+  
+endmodule
+    
+    
