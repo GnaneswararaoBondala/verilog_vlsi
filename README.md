@@ -1,1 +1,1 @@
-# vlsiusingeda-online-
+# verilog_vlsi
